@@ -1,6 +1,7 @@
 FROM ubuntu:bionic-20190612
 
 ENV MYSQL_USER=mysql \
+    MYSQL_PASSWORD=password \
     MYSQL_VERSION=5.7.26 \
     MYSQL_DATA_DIR=/var/lib/mysql \
     MYSQL_RUN_DIR=/run/mysqld \

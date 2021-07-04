@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-image
+spec:
+  selector:
+    matchLabels:
+      run: wp-image
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: wp-image
+    spec:
+      containers:
+      - name: wp-image
+        image: docker-hub/wp-image
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wp-image
+  labels:
+    run: wp-image
+spec:
+  ports:
+  - port: 80
+  selector:
+    run: wp-image
